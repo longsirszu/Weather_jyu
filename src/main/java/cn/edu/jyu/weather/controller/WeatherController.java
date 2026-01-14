@@ -21,10 +21,7 @@ public class WeatherController {
     @Autowired
     private ObjectMapper objectMapper;
 
-    /**
-     * 辅助方法：把 API 返回的原始 JSON 字符串转为 Java 对象
-     * 这样返回给前端时，就不会带有转义符，而是标准的嵌套 JSON
-     */
+
     private Object parseJson(String rawData) {
         try {
             if (rawData == null) return null;
@@ -36,7 +33,7 @@ public class WeatherController {
         }
     }
 
-    // 1. 实时天气
+    // 实时天气
     @GetMapping("/now")
     public Result<Object> getNow(@RequestParam(name = "location", defaultValue = "101010100") String location) {
         // 注意：这里变量名也建议改成 location，保持一致
@@ -44,14 +41,14 @@ public class WeatherController {
         return Result.success(parseJson(rawData));
     }
 
-    // 2. 3天预报
+    // 3天预报
     @GetMapping("/forecast")
     public Result<Object> getForecast(@RequestParam(name = "location", defaultValue = "101010100") String location) {
         String rawData = weatherAPIService.getForecastWeather(location);
         return Result.success(parseJson(rawData));
     }
 
-    // 3. 24小时逐小时预报
+    // 24小时逐小时预报
     @GetMapping("/24h")
     public Result<Object> getHourly(@RequestParam(name = "location", defaultValue = "101010100") String location) {
         String rawData = weatherAPIService.getHourlyWeather(location);

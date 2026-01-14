@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import java.math.BigDecimal; // 替换Double为BigDecimal，匹配decimal类型
+import java.math.BigDecimal;
 
-@TableName("t_city") // 显式指定表名，与全局prefix一致
+@TableName("t_city") // 显式指定表名
 @Data
 public class City {
     // 主键显式指定字段名，location_id非自增，设置type=INPUT
@@ -34,10 +34,10 @@ public class City {
     private String adm2NameZh;
 
     @TableField("latitude")
-    private BigDecimal latitude; // 替换Double，精准匹配decimal
+    private BigDecimal latitude;
 
     @TableField("longitude")
-    private BigDecimal longitude; // 替换Double
+    private BigDecimal longitude;
 
     @TableField("ad_code")
     private String adCode;

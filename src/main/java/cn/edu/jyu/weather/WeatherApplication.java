@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-@MapperScan("cn.edu.jyu.weather.mapper") // 唯一扫描入口
+@MapperScan("cn.edu.jyu.weather.mapper")
 public class WeatherApplication {
     public static void main(String[] args) {
         SpringApplication.run(WeatherApplication.class, args);

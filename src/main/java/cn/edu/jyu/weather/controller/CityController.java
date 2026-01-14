@@ -15,10 +15,7 @@ public class CityController {
     @Autowired
     private CityService cityService;
 
-    /**
-     * 城市搜索接口
-     * URL: /city/search?q=北京
-     */
+    //城市搜索接口
     @GetMapping("/search")
     public Result<List<City>> search(@RequestParam String q) {
         if (q == null || q.trim().isEmpty()) {

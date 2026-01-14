@@ -63,9 +63,7 @@ public class WeatherAPIService {
             return response.getBody();
 
         } catch (Exception e) {
-            // ============================================
-            // 🚨 这里的代码就是“激活”数据库日志的关键！
-            // ============================================
+            // “激活”数据库日志
             try {
                 System.out.println(">>> 捕获到异常，正在写入数据库日志...");
 
