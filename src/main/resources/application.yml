@@ -1,6 +1,24 @@
 spring:
   application:
     name: weather
+  datasource:
+    url: jdbc:mysql://193.112.105.83:3307/weather_db
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # 缓存配置
+  cache:
+    type: simple
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      table-prefix: t_
 
 # JWT配置
 jwt:
@@ -11,16 +29,18 @@ jwt:
     sub: 4GTJJAD7VP
     ttl: 86400
   signing:
-    privateKey: "-----BEGIN PRIVATE KEY-----
-      MFECAQEwBQYDK2VwBCIEIJATo8PEIbryNup6rQFTl6yB79bHRaxFV9Yj0zQriYg+gSEAK9JDrdPIcTYrx/h0i1HwpK7K+TexE6f2Ap2G5xqaKnw=-----END PRIVATE KEY-----"
+    privateKey: |
+      -----BEGIN PRIVATE KEY-----
+      MFECAQEwBQYDK2VwBCIEIJATo8PEIbryNup6rQFTl6yB79bHRaxFV9Yj0zQriYg+
+      gSEAK9JDrdPIcTYrx/h0i1HwpK7K+TexE6f2Ap2G5xqaKnw=
+      -----END PRIVATE KEY-----
 
 # 天气API配置
 weather-api:
-  weather-api:
   weather-host: https://nd3qqr6w8f.re.qweatherapi.com
   now-weather-path: /v7/weather/now
   forecast-path: /v7/weather/3d
-  eh-weather-path: v7/weather/24h
+  eh-weather-path: /v7/weather/24h
   def-location: 101010100
-  timeout: 5000
+  timeout: 3000
   max-retries: 3
